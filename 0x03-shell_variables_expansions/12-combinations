@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a{a,z},z{a,z}}
+printf '%s\n' {a..z}{a..z} | sort | grep -v oo
