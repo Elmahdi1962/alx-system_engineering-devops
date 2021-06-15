@@ -1,0 +1,25 @@
+total 23
+-rwxr-xr-x 1 mamou 197609 30 Jun 15 11:37 0-alias*
+-rwxr-xr-x 1 mamou 197609 31 Jun 15 11:49 1-hello_you*
+-rwxr-xr-x 1 mamou 197609 35 Jun 15 11:47 1-hello_you~*
+-rwxr-xr-x 1 mamou 197609 38 Jun 15 14:35 10-love_exponent_breath*
+-rwxr-xr-x 1 mamou 197609 40 Jun 15 14:30 10-love_exponent_breath~*
+-rwxr-xr-x 1 mamou 197609 37 Jun 15 15:29 100-decimal_to_hexadecimal*
+-rwxr-xr-x 1 mamou 197609 41 Jun 15 15:33 101-rot13*
+-rw-r--r-- 1 mamou 197609  0 Jun 15 15:49 102-odd
+-rwxr-xr-x 1 mamou 197609 34 Jun 15 14:47 11-binary_to_decimal*
+-rwxr-xr-x 1 mamou 197609 61 Jun 15 15:10 12-combinations*
+-rwxr-xr-x 1 mamou 197609 35 Jun 15 14:54 12-combinations~*
+-rwxr-xr-x 1 mamou 197609 35 Jun 15 15:22 13-print_float*
+-rw-r--r-- 1 mamou 197609  3 Jun 15 15:17 13-print_float~
+-rwxr-xr-x 1 mamou 197609 42 Jun 15 11:58 2-path*
+-rwxr-xr-x 1 mamou 197609 50 Jun 15 14:03 3-paths*
+-rwxr-xr-x 1 mamou 197609 37 Jun 15 12:25 3-paths~*
+-rwxr-xr-x 1 mamou 197609 23 Jun 15 14:04 4-global_variables*
+-rwxr-xr-x 1 mamou 197609 18 Jun 15 14:11 5-local_variables*
+-rwxr-xr-x 1 mamou 197609 32 Jun 15 14:14 6-create_local_variable*
+-rwxr-xr-x 1 mamou 197609 39 Jun 15 14:21 7-create_global_variable*
+-rwxr-xr-x 1 mamou 197609 43 Jun 15 14:24 8-true_knowledge*
+-rwxr-xr-x 1 mamou 197609 39 Jun 15 14:27 9-divide_and_rule*
+-rw-r--r-- 1 mamou 197609 43 Jun 15 11:43 README.md
+-rw-r--r-- 1 mamou 197609 18 Jun 15 15:17 source
