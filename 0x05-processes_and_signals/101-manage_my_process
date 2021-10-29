@@ -15,8 +15,10 @@ if [[ $# -eq 1 ]]; then
 		echo "manage_my_process stopped"
 	elif [[ "$1" = "restart" ]];
 	then
-		kill -9 "$(cat /var/run/my_process.pid)"
-		rm /var/run/my_process.pid
+		if test -f "/var/run/my_process.pid";then
+			kill -9 "$(cat /var/run/my_process.pid)"
+			rm /var/run/my_process.pid
+		fi
 		./manage_my_process &
 		echo $! >> /var/run/my_process.pid
 		echo "manage_my_process restarted"
