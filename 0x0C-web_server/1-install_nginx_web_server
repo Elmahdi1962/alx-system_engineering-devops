@@ -7,3 +7,8 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 chmod -R 755 /var/www
 echo 'Hello World!' > /var/www/html/index.html
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	service nginx start
+else
+	service nginx restart
+fi
