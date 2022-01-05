@@ -6,7 +6,7 @@
 #docker run -p 8080:80 -d -it holbertonschool/265-0
 
 # get the container id
-id=$(docker ps | grep "holbertonschool/265-0" | cut -d' ' -f1)
+#id=$(docker ps | grep "holbertonschool/265-0" | cut -d' ' -f1)
 
 # start apache service in the container
 #docker exec -i "$id" service apache2 start
