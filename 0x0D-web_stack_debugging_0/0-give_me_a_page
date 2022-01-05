@@ -9,4 +9,5 @@
 id=$(docker ps | grep "holbertonschool/265-0" | cut -d' ' -f1)
 
 # start apache service in the container
-docker exec -i "$id" service apache2 start
+#docker exec -i "$id" service apache2 start
+sudo service apache2 start
