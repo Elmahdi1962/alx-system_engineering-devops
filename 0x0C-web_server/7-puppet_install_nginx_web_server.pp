@@ -19,7 +19,7 @@ package { 'nginx':
 exec { 'allow HTTP':
   command => "ufw allow 'Nginx HTTP'",
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  onlyif  => '! dpkg -l nginx | egrep \'îi.*nginx\' > /dev/null 2>&1',
+  onlyif  => 'dpkg -l nginx | egrep \'îi.*nginx\' > /dev/null 2>&1',
 }
 
 # change folder rights
