@@ -1,29 +1,23 @@
 # add stable version of nginx
-exec { 'add nginx stable repo':
-  command => 'sudo add-apt-repository ppa:nginx/stable',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-}
+# exec { 'add nginx stable repo':
+#   command => 'sudo add-apt-repository ppa:nginx/stable',
+#   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+# }
 
 # update software packages list
 exec { 'update packages':
-  command => 'apt-get update',
+  command => 'apt-get -y update',
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
 # install nginx
 package { 'nginx':
-  ensure     => 'installed',
+  ensure  => 'installed',
 }
 
 # allow HTTP
 exec { 'allow HTTP':
   command => "ufw allow 'Nginx HTTP'",
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-}
-
-# change folder rights
-exec { 'chmod www folder':
-  command => 'chmod -R 755 /var/www',
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
@@ -37,6 +31,12 @@ file { '/var/www/html/404.html':
   content => "Ceci n'est pas une page\n",
 }
 
+# change folder rights
+exec { 'chmod':
+  command => 'chmod -R 755 /var/www',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+}
+
 # add redirection and error page
 file { 'Nginx default config file':
   ensure  => file,
@@ -45,7 +45,7 @@ file { 'Nginx default config file':
 "server {
         listen 80 default_server;
         listen [::]:80 default_server;
-               root /var/www/html;
+        root /var/www/html;
 
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
