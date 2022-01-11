@@ -57,6 +57,15 @@ file { 'Nginx default config file':
                 # as directory, then fall back to displaying a 404.
                 try_files \$uri \$uri/ =404;
         }
+
+        error_page 404 /404.html;
+        location  /404.html {
+            internal;
+        }
+        
+        if (\$request_filename ~ redirect_me){
+            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        }
 }
 ",
 }
