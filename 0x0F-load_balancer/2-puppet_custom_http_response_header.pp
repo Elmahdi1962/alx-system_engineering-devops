@@ -40,7 +40,6 @@ exec { 'chmod':
 # add redirection and error page
 file { 'Nginx default config file':
   ensure   => file,
-  provider => shell,
   path     => '/etc/nginx/sites-available/default',
   content  =>
 "server {
