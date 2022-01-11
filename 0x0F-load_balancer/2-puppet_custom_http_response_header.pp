@@ -1,30 +1,24 @@
 # add stable version of nginx
-exec { 'add nginx stable repo':
-  command => 'sudo add-apt-repository ppa:nginx/stable',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-}
+# exec { 'add nginx stable repo':
+#   command => 'sudo add-apt-repository ppa:nginx/stable',
+#   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+# }
 
 # update software packages list
 exec { 'update packages':
-  command => 'apt-get update',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  command => 'apt-get -y update',
+  provider => shell,
 }
 
 # install nginx
 package { 'nginx':
-  ensure     => 'installed',
+  ensure  => 'installed',
 }
 
 # allow HTTP
 exec { 'allow HTTP':
   command => "ufw allow 'Nginx HTTP'",
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-}
-
-# change folder rights
-exec { 'chmod www folder':
-  command => 'chmod -R 755 /var/www',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  provider => shell,
 }
 
 # create index file
@@ -37,15 +31,22 @@ file { '/var/www/html/404.html':
   content => "Ceci n'est pas une page\n",
 }
 
+# change folder rights
+exec { 'chmod':
+  command => 'chmod -R 755 /var/www',
+  provider => shell,
+}
+
 # add redirection and error page
 file { 'Nginx default config file':
-  ensure  => file,
-  path    => '/etc/nginx/sites-enabled/default',
-  content =>
+  ensure   => file,
+  provider => shell,
+  path     => '/etc/nginx/sites-available/default',
+  content  =>
 "server {
         listen 80 default_server;
         listen [::]:80 default_server;
-               root /var/www/html;
+        root /var/www/html;
 
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
@@ -57,6 +58,7 @@ file { 'Nginx default config file':
                 # as directory, then fall back to displaying a 404.
                 try_files \$uri \$uri/ =404;
         }
+
         error_page 404 /404.html;
         location  /404.html {
             internal;
@@ -71,7 +73,7 @@ file { 'Nginx default config file':
 # restart nginx
 exec { 'restart service':
   command => 'service nginx restart',
-  path    => '/usr/bin:/usr/sbin:/bin',
+  provider => shell,
 }
 
 # start service nginx
