@@ -10,10 +10,14 @@ exec { 'update packages':
   provider => shell,
 }
 
-# install nginx
-package { 'nginx':
-  ensure  => 'installed',
+exec { 'install nginx':
+  command => 'apt-get -y install nginx',
+  provider => shell,
 }
+# install nginx
+# package { 'nginx':
+#   ensure  => 'installed',
+# }
 
 # allow HTTP
 exec { 'allow HTTP':
