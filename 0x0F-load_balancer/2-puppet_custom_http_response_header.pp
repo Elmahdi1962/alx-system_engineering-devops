@@ -41,7 +41,7 @@ exec { 'chmod':
 file { 'Nginx default config file':
   ensure   => file,
   provider => shell,
-  path     => '/etc/nginx/sites-enabled/default',
+  path     => '/etc/nginx/sites-available/default',
   content  =>
 "server {
         listen 80 default_server;
