@@ -1,29 +1,8 @@
-# update software packages list
-exec { 'update packages':
-  command => 'apt-get -y update',
-  provider => shell,
-}
-
-# install
-exec { 'install nginx':
-  command => 'apt-get -y install nginx',
-  provider => shell,
-}
-
-# update config
+# Automate the task of creating a custom HTTP header response, but with Puppet.
 exec { 'command':
-  command => 'sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default',
+  command => 'apt-get -y update;
+  apt-get -y install nginx;
+  sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
+  service nginx restart',
   provider => shell,
-}
-
-# restart nginx
-exec { 'restart service':
-  command => 'service nginx restart',
-  provider => shell,
-}
-
-# start service nginx
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
 }
