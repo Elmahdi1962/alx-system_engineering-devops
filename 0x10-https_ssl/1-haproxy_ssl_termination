@@ -35,12 +35,7 @@ defaults
 
 frontend  elmahdi-alx-frontend-http
         bind *:80
-        http-request set-header X-Forwarded-Proto http
-        default_backend elmahdi-alx-backend
-
-frontend  elmahdi-alx-frontend-https
         bind *:443 ssl crt /etc/ssl/www.elmahdi-alx.tech/www.elmahdi-alx.tech.pem
-        http-request set-header X-Forwarded-Proto https
         default_backend elmahdi-alx-backend
 
 backend elmahdi-alx-backend
