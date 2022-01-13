@@ -37,7 +37,6 @@ defaults
 
 frontend  elmahdi-alx-frontend-http
         bind *:80
-        redirect scheme https code 301 if !{ ssl_fc }
         http-request set-header X-Forwarded-Proto http
         default_backend elmahdi-alx-backend
 
