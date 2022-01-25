@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # fix task 2 container
-pkill apache2
+pkill -f apache2
 chmod 644 /etc/nginx/nginx.conf
 sed -i 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
 sed -i 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
-sudo -u nginx service nginx restart
+su nginx -s /bin/bash -c 'service nginx restart'
