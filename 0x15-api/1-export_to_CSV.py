@@ -40,11 +40,11 @@ if __name__ == '__main__':
                                             'no title found'
                                             ))
 
-    print('Employee {} is done with tasks({}/{}):'.format(
-                                                   emp_name,
-                                                   done_todos,
-                                                   total_todos
-                                                   ))
+    # print('Employee {} is done with tasks({}/{}):'.format(
+    #                                                emp_name,
+    #                                                done_todos,
+    #                                                total_todos
+    #                                                ))
 
-    for title in done_todos_titles:
-        print('\t ' + title)
+    # for title in done_todos_titles:
+    #     print('\t ' + title)
