@@ -16,7 +16,7 @@ if __name__ == '__main__':
     res = requests.get(
                    'https://jsonplaceholder.typicode.com/users/' +
                    emp_id)
-    emp_name = res.json().get('name', 'user name not found')
+    emp_name = res.json().get('username', 'user name not found')
 
     res = requests.get(
                    'https://jsonplaceholder.typicode.com/users/' +
