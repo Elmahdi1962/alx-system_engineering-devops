@@ -7,7 +7,6 @@ if __name__ == '__main__':
     import requests
     from sys import argv
 
-
     emp_id = argv[1]
     file_name = emp_id + '.csv'
     total_todos = 0
