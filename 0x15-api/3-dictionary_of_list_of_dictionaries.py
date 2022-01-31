@@ -7,9 +7,6 @@ if __name__ == '__main__':
     import requests
 
     file_name = 'todo_all_employees.json'
-    total_todos = 0
-    done_todos = 0
-    done_todos_titles = []
 
     res = requests.get(
                    'https://jsonplaceholder.typicode.com/users/')
@@ -22,7 +19,6 @@ if __name__ == '__main__':
     records = dict()
 
     for todo in todos:
-        total_todos += 1
         user_id = str(todo.get('userId'))
         user = list(filter(lambda user: str(user.get('id')) == user_id, users))
         username = user[0].get('username')
