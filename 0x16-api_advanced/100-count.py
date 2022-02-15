@@ -25,7 +25,8 @@ def count_words(subreddit, word_list, found_list=[], after=None):
             count_words(subreddit, word_list, found_list, aft)
         else:
             result = {}
-            for word in found_list.sort():
+            found_list.sort()
+            for word in found_list:
                 if word.lower() in result.keys():
                     result[word.lower()] += 1
                 else:
