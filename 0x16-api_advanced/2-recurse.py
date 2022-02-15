@@ -10,7 +10,6 @@ def recurse(subreddit, hot_list=[], after=None):
     user_agent = {'User-agent': 'test45'}
     posts = requests.get('http://www.reddit.com/r/{}/hot.json?after={}'
                          .format(subreddit, after), headers=user_agent)
-    print(posts.status_code)
     if posts.status_code == 200:
         posts = posts.json()['data']
         aft = posts['after']
