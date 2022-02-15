@@ -7,8 +7,9 @@ import sys
 
 def number_of_subscribers(subreddit):
     '''gets num of subs of a subreddit'''
+    headers = {'User-agent': 'greg'}
     subs = requests.get('https://www.reddit.com/r/{}/about.json'.format(
-        sys.argv[1]), allow_redirects=False)
+        sys.argv[1]), allow_redirects=False, headers=headers)
 
     if subs.status_code == 200:
         return (subs.json()['data']['subscribers'])
