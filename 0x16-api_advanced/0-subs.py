@@ -7,7 +7,7 @@ import sys
 
 def number_of_subscribers(subreddit):
     '''gets num of subs of a subreddit'''
-    headers = {'User-agent': 'greg'}
+    headers = {'User-agent': 'test'}
     subs = requests.get('https://www.reddit.com/r/{}/about.json'.format(
         sys.argv[1]), allow_redirects=False, headers=headers)
 
