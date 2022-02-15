@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' task 2 module'''
+''' task 3 module'''
 
 import requests
 
@@ -30,6 +30,7 @@ def count_words(subreddit, word_list, found_list=[], after=None):
                     result[word.lower()] += 1
                 else:
                     result[word.lower()] = 1
+            result = sorted(result)
             for key, value in sorted(result.items(), key=lambda item: item[1],
                                      reverse=True):
                 print('{}: {}'.format(key, value))
