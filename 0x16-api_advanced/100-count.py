@@ -1,37 +1,34 @@
 #!/usr/bin/python3
-''' task 2 module'''
-
+'''
+displays top 10 hot posts
+'''
 import requests
-import sys
 
 
-def count_words(subreddit, word_list, found_list=[], after=None):
-    '''return count of keywords in hot posts titles'''
-    user_agent = {'User-agent': 'test45'}
-    posts = requests.get('http://www.reddit.com/r/{}/hot.json?after={}'
-                         .format(subreddit, after), headers=user_agent)
-    if after is None:
-        word_list = [word.lower() for word in word_list]
-    if posts.status_code == 200:
-        posts = posts.json()['data']
-        aft = posts['after']
-        posts = posts['children']
-        for post in posts:
-            title = post['data']['title'].lower()
-            for word in title.split(' '):
-                if word.lower() in word_list:
-                    found_list.append(word)
-        if aft is not None:
-            count_words(subreddit, word_list, found_list, aft)
-        else:
-            result = {}
-            for word in found_list:
-                if word.lower() in result.keys():
-                    result[word.lower()] += 1
-                else:
-                    result[word.lower()] = 1
-            for key, value in sorted(result.items(), key=lambda item: item[1],
-                                     reverse=True):
-                print('{}: {}'.format(key, value))
+def count_words(subreddit, word_list, after=None, result=[]):
+    user_agent = {'User-agent': 'greg'}
+    sub = requests.get('http://www.reddit.com/r/{}/hot.json?after={}'
+                       .format(subreddit, after), headers=user_agent)
+
+    sub = sub.json().get('data')
+    after = sub.get('after')
+    sub = sub.get('children')
+    for obj in sub:
+        title = obj['data'].get('title').split(' ')
+        for words in title:
+            word = words.lower()
+            if word in word_list:
+                result.append(word)
+    if after is not None:
+        count_words(subreddit, word_list, after, result)
     else:
-        return
+        dict_res = {}
+        for word in word_list:
+            dict_res[word] = 0
+        for i in result:
+            dict_res[i] += 1
+        for v in sorted(dict_res.values(), reverse=True):
+
+            for k in dict_res:
+                if dict_res[k] == v and v != 0:
+                    print("{}: {}".format(k, v))
