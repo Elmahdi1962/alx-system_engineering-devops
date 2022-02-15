@@ -18,7 +18,7 @@ def count_words(subreddit, word_list, found_list=[], after=None):
         posts = posts['children']
         for post in posts:
             title = post['data']['title'].lower()
-            for word in title:
+            for word in title.split(' '):
                 if word in word_list:
                     found_list.append(word)
         if aft is not None:
