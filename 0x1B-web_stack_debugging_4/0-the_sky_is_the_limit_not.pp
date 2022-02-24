@@ -6,6 +6,6 @@ exec {'change limit':
 
 # restart service
 exec {'restart service':
-  command  => "sudo service nginx restart",
+  command  => 'sudo service nginx restart',
   provider => shell
 }
