@@ -8,3 +8,9 @@ exec {'change limit':
   command  => "sudo sed -i 's/holberton hard nofile 5/holberton hard nofile 88888/g'  /etc/security/limits.conf",
   provider => shell
 }
+
+# restart service
+exec {'restart service':
+  command  => "sudo service nginx restart",
+  provider => shell
+}
